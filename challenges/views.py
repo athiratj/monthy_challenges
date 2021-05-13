@@ -6,14 +6,15 @@ from django.http import HttpResponse, HttpResponseNotFound
 def monthly_challenge_number(request, month):
     return HttpResponse(month)
     
+challenge ={
+    'jan':'Only vegetables in food!',
+    'feb':'Exercise daily!',
+    'mar':'Study aptitude for a month!',
+    'apr':'Practice coding'
+}    
 def monthly_challenge(request, month):
-    challenge_text=None
-    if month=='jan':
-        challenge_text='Only vegetables in food!'
-    elif month=='feb':
-        challenge_text='Exercise daily!'
-    elif month=='mar':
-        challenge_text='Study aptitude daily!'
-    else:
+    try:
+        challenge_text=challenge[month] 
+        return HttpResponse(challenge_text)
+    except:
         return HttpResponseNotFound('No such a month found!')
-    return HttpResponse(challenge_text)

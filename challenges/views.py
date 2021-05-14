@@ -11,6 +11,15 @@ challenge ={
     'apr':'Practice coding'
 }  
 
+def index(request):
+    list_items=""
+    months=list(challenge.keys())
+    
+    for i in months:
+        month_path=reverse("month-challenge",args=[i])
+        list_items+=f"<li><a href=\"{month_path}\">{i.capitalize()}</li>"
+        
+    return HttpResponse(f"<ul>{list_items}</ul>")
 
 def monthly_challenge_number(request, month):
     months=list(challenge.keys())

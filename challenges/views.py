@@ -5,10 +5,10 @@ from django.urls import reverse
 # Create your views here.
 
 challenge ={
-    'jan':'Only vegetables in food!',
-    'feb':'Exercise daily!',
-    'mar':'Study aptitude for a month!',
-    'apr':'Practice coding'
+    'january':'Only vegetables in food!',
+    'february':'Exercise daily!',
+    'march':'Study aptitude for a month!',
+    'april':'Practice coding'
 }  
 
 def index(request):
@@ -34,6 +34,9 @@ def monthly_challenge_number(request, month):
 def monthly_challenge(request, month):
     try:
         challenge_text=challenge[month] 
-        return render(request,"challenges/challenge.html")
+        return render(request,"challenges/challenge.html",{
+            "text": challenge_text,
+            "month_name": month.capitalize()
+        })
     except:
         return HttpResponseNotFound("<h1>No such a month found!<h1>")

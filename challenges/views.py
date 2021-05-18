@@ -8,7 +8,8 @@ challenge ={
     'january':'Only vegetables in food!',
     'february':'Exercise daily!',
     'march':'Study aptitude for a month!',
-    'april':'Practice coding'
+    'april':'Practice coding',
+    'may': None,
 }  
 
 def index(request):
